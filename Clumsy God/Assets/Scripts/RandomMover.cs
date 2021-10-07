@@ -9,24 +9,39 @@ public class RandomMover : MonoBehaviour
     [SerializeField] float minY;
     [SerializeField] float maxX;
     [SerializeField] float maxY;
+    [SerializeField] float minSpeed;
+    [SerializeField] float maxSpeed;
+    [SerializeField] float timeToMaxDifficulty;
+    [SerializeField] GameObject restartPanel;
     [SerializeField] float speed;
+    
     Vector3 targetPosition;
+    float difficulty;
+    bool moveAllow = true;
     
     void Start()
     {
         targetPosition = randomPosition();
+        
     }
 
     
     void Update()
     {
-        if ( transform.position != targetPosition)
+        GetDifficulty();
+        
+        if (moveAllow)
         {
-            transform.position = Vector2.MoveTowards( transform.position, targetPosition, speed * Time.deltaTime);
-        }
+            if ( transform.position != targetPosition)
+            {
+                speed = Mathf.Lerp( minSpeed, maxSpeed, difficulty);
+                transform.position = Vector2.MoveTowards( transform.position, targetPosition, speed * Time.deltaTime);
+            }
 
-        else
-            targetPosition = randomPosition();
+            else
+                targetPosition = randomPosition();
+        }
+        
         
     }
 
@@ -37,7 +52,17 @@ public class RandomMover : MonoBehaviour
 
     void OnTriggerEnter2D( Collider2D collision)
     {
-        if ( collision.tag == "Planet")
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if ( collision.tag == "Planet" )
+        {
+            restartPanel.SetActive(true);
+            Debug.Log("this is executing");
+            moveAllow = false;
+        }
+            
+    }
+
+    void GetDifficulty()
+    {
+        difficulty = Mathf.Clamp01(Time.timeSinceLevelLoad / timeToMaxDifficulty);
     }
 }

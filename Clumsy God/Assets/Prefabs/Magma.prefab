@@ -103,7 +103,11 @@ MonoBehaviour:
   minY: -4.366
   maxX: 8.256
   maxY: 4.369
-  speed: 2
+  minSpeed: 1
+  maxSpeed: 4
+  timeToMaxDifficulty: 10
+  restartPanel: {fileID: 0}
+  speed: 0
 --- !u!58 &1385943082326443558
 CircleCollider2D:
   m_ObjectHideFlags: 0
