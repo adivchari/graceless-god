@@ -14,6 +14,7 @@ public class RandomMover : MonoBehaviour
     [SerializeField] float timeToMaxDifficulty;
     [SerializeField] GameObject restartPanel;
     [SerializeField] float speed;
+    [SerializeField] ParticleSystem planetDamage;
     
     Vector3 targetPosition;
     float difficulty;
@@ -55,6 +56,7 @@ public class RandomMover : MonoBehaviour
         if ( collision.tag == "Planet" )
         {
             restartPanel.SetActive(true);
+            Instantiate(planetDamage, transform.position, Quaternion.identity);
             Debug.Log("this is executing");
             moveAllow = false;
         }

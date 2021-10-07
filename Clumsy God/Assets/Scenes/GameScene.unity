@@ -490,6 +490,10 @@ PrefabInstance:
       value: Magma (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1255617659500362998, guid: 7e6278e3988bc78459bd994463622a7a, type: 3}
+      propertyPath: planetDamage
+      value: 
+      objectReference: {fileID: 4888071560173634278, guid: 06059560f58f14e4a86f395cf8d21e85, type: 3}
+    - target: {fileID: 1255617659500362998, guid: 7e6278e3988bc78459bd994463622a7a, type: 3}
       propertyPath: restartPanel
       value: 
       objectReference: {fileID: 118113407}
@@ -550,6 +554,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Magma
       objectReference: {fileID: 0}
+    - target: {fileID: 1255617659500362998, guid: 7e6278e3988bc78459bd994463622a7a, type: 3}
+      propertyPath: planetDamage
+      value: 
+      objectReference: {fileID: 4888071560173634278, guid: 06059560f58f14e4a86f395cf8d21e85, type: 3}
     - target: {fileID: 1255617659500362998, guid: 7e6278e3988bc78459bd994463622a7a, type: 3}
       propertyPath: restartPanel
       value: 

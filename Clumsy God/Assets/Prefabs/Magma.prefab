@@ -106,8 +106,9 @@ MonoBehaviour:
   minSpeed: 1
   maxSpeed: 4
   timeToMaxDifficulty: 10
-  restartPanel: {fileID: 0}
+  restartPanel: {fileID: 457662438258235714, guid: 96e65e16104d272469f091b4d1ed1135, type: 3}
   speed: 0
+  planetDamage: {fileID: 4888071560173634278, guid: 06059560f58f14e4a86f395cf8d21e85, type: 3}
 --- !u!58 &1385943082326443558
 CircleCollider2D:
   m_ObjectHideFlags: 0
