@@ -12,13 +12,13 @@ public class RandomMover : MonoBehaviour
     [SerializeField] float minSpeed;
     [SerializeField] float maxSpeed;
     [SerializeField] float timeToMaxDifficulty;
-    [SerializeField] GameObject restartPanel;
     [SerializeField] float speed;
-    [SerializeField] ParticleSystem planetDamage;
+    
+    public bool movement = true;
     
     Vector3 targetPosition;
     float difficulty;
-    bool moveAllow = true;
+    
     
     void Start()
     {
@@ -31,10 +31,10 @@ public class RandomMover : MonoBehaviour
     {
         GetDifficulty();
         
-        if (moveAllow)
+        if (movement)
         {
             if ( transform.position != targetPosition)
-            {
+            {                                       
                 speed = Mathf.Lerp( minSpeed, maxSpeed, difficulty);
                 transform.position = Vector2.MoveTowards( transform.position, targetPosition, speed * Time.deltaTime);
             }
@@ -42,8 +42,6 @@ public class RandomMover : MonoBehaviour
             else
                 targetPosition = randomPosition();
         }
-        
-        
     }
 
     Vector2 randomPosition()
@@ -51,20 +49,16 @@ public class RandomMover : MonoBehaviour
         return new Vector3( Random.Range(minX, maxX), Random.Range(minY, maxY), 0);
     }
 
-    void OnTriggerEnter2D( Collider2D collision)
-    {
-        if ( collision.tag == "Planet" )
-        {
-            restartPanel.SetActive(true);
-            Instantiate(planetDamage, transform.position, Quaternion.identity);
-            Debug.Log("this is executing");
-            moveAllow = false;
-        }
-            
-    }
+   
+
 
     void GetDifficulty()
     {
         difficulty = Mathf.Clamp01(Time.timeSinceLevelLoad / timeToMaxDifficulty);
+    }
+
+    void OnTriggerEnter2D (Collider2D other) 
+    {
+            movement = false;                       //why only stopping collided planets? but thats good maybe?
     }
 }

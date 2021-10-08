@@ -7,10 +7,14 @@ public class PlayerInput : MonoBehaviour
     
     bool moveAllowed = false;
     Collider2D planetCollider;
+    AudioSource explosion;
+    [SerializeField] ParticleSystem planetDamage;
+    [SerializeField] GameObject restartPanel;
 
     void Start() 
     {
-        planetCollider = GetComponent<Collider2D>();        
+        planetCollider = GetComponent<Collider2D>();  
+        explosion = GetComponent<AudioSource>();      
     }
     
     void Update()
@@ -44,5 +48,20 @@ public class PlayerInput : MonoBehaviour
         {
             moveAllowed = false;
         }
+    }
+     
+     
+     void OnTriggerEnter2D( Collider2D collision)
+    {
+        if ( collision.tag == "Planet" )
+        {
+            
+            restartPanel.SetActive(true);
+            Instantiate(planetDamage, transform.position, Quaternion.identity);
+            explosion.Play();
+            moveAllowed = false;
+        }
+
+           
     }
 }
