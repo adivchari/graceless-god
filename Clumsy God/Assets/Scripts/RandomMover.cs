@@ -14,7 +14,7 @@ public class RandomMover : MonoBehaviour
     [SerializeField] float timeToMaxDifficulty;
     [SerializeField] float speed;
     
-    public bool movement = true;
+    public static bool movement = true;               //works for all planets because keyword "static", why?
     
     Vector3 targetPosition;
     float difficulty;
@@ -35,7 +35,7 @@ public class RandomMover : MonoBehaviour
         {
             if ( transform.position != targetPosition)
             {                                       
-                speed = Mathf.Lerp( minSpeed, maxSpeed, difficulty);
+                speed = Mathf.Lerp( minSpeed, maxSpeed, difficulty);   //slider b/w min and max, difficulty is the curent position
                 transform.position = Vector2.MoveTowards( transform.position, targetPosition, speed * Time.deltaTime);
             }
 
@@ -57,8 +57,6 @@ public class RandomMover : MonoBehaviour
         difficulty = Mathf.Clamp01(Time.timeSinceLevelLoad / timeToMaxDifficulty);
     }
 
-    void OnTriggerEnter2D (Collider2D other) 
-    {
-            movement = false;                       //why only stopping collided planets? but thats good maybe?
-    }
+    
+
 }

@@ -28,7 +28,7 @@ public class PlayerInput : MonoBehaviour
 
     void PlayerControlsPlanet()
     {
-        Touch touch = Input.GetTouch(0);                                               //pixel coordinates
+        Touch touch = Input.GetTouch(0);                                               //pixel coordinates of first finger on screen
         Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);    //converts pixel coordinates to world coordinates
 
         if ( touch.phase == TouchPhase.Began)

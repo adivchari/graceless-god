@@ -3,7 +3,10 @@ guid: 1570f1d8c8ff3a347bfbc49beb7d20c5
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - winScreen: {instanceID: 0}
+  - winSound: {instanceID: 0}
+  - freezePlanet: {fileID: 1255617659500362997, guid: 7e6278e3988bc78459bd994463622a7a, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

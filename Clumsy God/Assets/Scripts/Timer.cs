@@ -10,10 +10,14 @@ public class Timer : MonoBehaviour
     [SerializeField] GameObject winScreen;
     [SerializeField] AudioSource winSound;
     
+    
+    
+    
     void Start()
     {
         timer = GetComponent<Text>();
         winSound = GetComponent<AudioSource>();
+        
     }
 
     
@@ -23,7 +27,7 @@ public class Timer : MonoBehaviour
         if (shotClock > 0)
         {
             shotClock -= Time.deltaTime;
-            timer.text = shotClock.ToString("F0");
+            timer.text = shotClock.ToString("F0");     //only displays the integer
         }
         else
             WinScreen();
@@ -32,6 +36,8 @@ public class Timer : MonoBehaviour
 
     void WinScreen()
     {
+        RandomMover.movement = false;
         winScreen.SetActive(true);
+        
     }
 }
